@@ -1,0 +1,25 @@
+{
+  "name": "geodb2",
+  "version": "1.0.0",
+  "description": "import esri geodatabase -test2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ubukawa/geodb2.git"
+  },
+  "keywords": [],
+  "author": "Taro Ubukawa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ubukawa/geodb2/issues"
+  },
+  "homepage": "https://github.com/ubukawa/geodb2#readme",
+  "dependencies": {
+    "config": "^3.3.7",
+    "hjson": "^3.2.2",
+    "json-text-sequence": "^1.0.1"
+  }
+}

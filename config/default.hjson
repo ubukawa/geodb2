@@ -1,0 +1,15 @@
+{
+    minzoom: 10
+    maxzoom: 12
+    srcs: [
+        {
+        url: test_area_z6.gdb
+        layer: elev
+        minzoom: 10
+        maxzoom: 12
+        }
+    ]
+    ogr2ogrPath: ogr2ogr
+    tippecanoePath: /usr/local/bin/tippecanoe
+    dstDir: zxy
+}
