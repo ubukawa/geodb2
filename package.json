@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ubukawa/geodb2#readme",
   "dependencies": {
+    "@mapbox/tilebelt": "^1.0.2",
     "config": "^3.3.7",
     "hjson": "^3.2.2",
     "json-text-sequence": "^1.0.1"

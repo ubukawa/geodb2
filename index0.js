@@ -5,9 +5,12 @@ const { spawn } = require('child_process')
 const srcs = config.get('srcs')
 const ogr2ogrPath = config.get('ogr2ogrPath')
 
-const downstream = process.stdout
 
-for (const src of srcs) {
+
+for (const src of srcs) { // if source is a single file, this loop is not necessary.
+  for (const tile of src.tiles){
+    const downstream = process.stdout
+  //console.log(`t_${tile[0]}_${tile[1]}_${tile[2]}`)
     const parser = new Parser()
       .on('data', f => {
         f.tippecanoe = {
@@ -24,9 +27,12 @@ for (const src of srcs) {
       '-f', 'GeoJSONSeq',
       '-lco', 'RS=YES',
       '/vsistdout/',
-      src.url
+//      `t_${tile[0]}_${tile[1]}_${tile[2]}.geojsons`,
+      src.url,
+      `t_${tile[0]}_${tile[1]}_${tile[2]}`
     ])
     ogr2ogr.stdout.pipe(parser)
-  }
 
+}
 
+}
