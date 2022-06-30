@@ -9,20 +9,18 @@ const ogr2ogrPath = config.get('ogr2ogrPath')
 const tippecanoePath = config.get('tippecanoePath')
 //const dstDir = config.get('dstDir')
 
-
-
-
 for (const src of srcs){
     let nOpenFiles = 0
     for (const tile of src.tiles){
         const tippecanoe = spawn(tippecanoePath, [
-            `--output=${tile[0]}-${tile[1]}-${tile[2]}.mbtiles`, //zxy
+            //`--output=${tile[0]}-${tile[1]}-${tile[2]}.mbtiles`, //zxy.mbtiles
+            `--output-to-directory=${tile[0]}-${tile[1]}-${tile[2]}`, //folder
             `--no-tile-compression`,
             `--minimum-zoom=${minzoom}`,
             `--maximum-zoom=${maxzoom}`
         ], {stdio: ['pipe', 'inherit', 'inherit']})
 
-        const downsteram = tippecanoe.stdin
+        const downstream = tippecanoe.stdin
 
         nOpenFiles++
 
@@ -34,12 +32,12 @@ for (const src of srcs){
                 maxzoom: src.maxzoom
             }
             delete f.properties.SHAPE_Length
-            downsteram.write(`\x1e${JSON.stringify(f)}\n`)
+            downstream.write(`\x1e${JSON.stringify(f)}\n`)
           })
           .on('finish', () =>{
             nOpenFiles--
             if (nOpenFiles === 0){
-                downsteram.end()
+                downstream.end()
             }
           })
 
@@ -54,6 +52,7 @@ for (const src of srcs){
         ogr2ogr.stdout.pipe(parser)
     }
 }
+
 
 
 

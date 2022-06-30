@@ -1,6 +1,9 @@
 test_area_z6.gdb
+test_area.gdb
 node_modules
 zxy
 zxy2
 zxy.mbtiles
 zxy.mbtiles-journal
+test/*
+test2/*
