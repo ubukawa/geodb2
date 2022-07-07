@@ -9,6 +9,11 @@ const ogr2ogrPath = config.get('ogr2ogrPath')
 const tippecanoePath = config.get('tippecanoePath')
 const dstDir = config.get('dstDir')
 
+
+
+/// single tippecanoe file
+
+
 const tippecanoe = spawn(tippecanoePath, [
     `--output-to-directory=${dstDir}`,
     `--no-tile-compression`,
@@ -22,6 +27,10 @@ const downstream = tippecanoe.stdin
 let nOpenFiles = 0
 
 for (const src of srcs) {
+
+
+
+  
     nOpenFiles++
     const parser = new Parser()
       .on('data', f => {
@@ -49,5 +58,8 @@ for (const src of srcs) {
     ])
     ogr2ogr.stdout.pipe(parser)
   }
+
+
+
 
 
